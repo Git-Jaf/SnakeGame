@@ -1,5 +1,7 @@
 package Paquete;
 
+import java.awt.event.KeyEvent;
+
 /**
  * @author Jonatan Alvarez
  */
@@ -18,22 +20,20 @@ public class Vista extends javax.swing.JFrame {
         PanelFondo fondo = new PanelFondo(800, 30);
         this.add(fondo);
         fondo.setBounds(10,10,800,800);
+        
+        this.requestFocus(true);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAvanzar = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
-
-        btnAvanzar.setText("Avanzar");
-        btnAvanzar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAvanzarActionPerformed(evt);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
             }
         });
 
@@ -41,24 +41,34 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnAvanzar)
-                .addGap(0, 747, Short.MAX_VALUE))
+            .addGap(0, 820, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnAvanzar)
-                .addGap(0, 797, Short.MAX_VALUE))
+            .addGap(0, 820, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvanzarActionPerformed
-        panel.avanzar();
-        panel.repaint();
-    }//GEN-LAST:event_btnAvanzarActionPerformed
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_LEFT:
+                panel.cambiarDireccion("LEFT");
+                break;
+            case KeyEvent.VK_RIGHT:
+                panel.cambiarDireccion("RIGHT");
+                break;
+            case KeyEvent.VK_UP:
+                panel.cambiarDireccion("UP");
+                break;
+            case KeyEvent.VK_DOWN:
+                panel.cambiarDireccion("DOWN");
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments
@@ -96,6 +106,5 @@ public class Vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAvanzar;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  * @author Jonatan Alvarez
  */
 public class PanelFondo extends JPanel{
-    Color colorFondo = Color.gray;
+    Color colorFondo = Color.WHITE;
     int tamMax, tam, can, res;
 
     public PanelFondo(int tamMax, int can) {
